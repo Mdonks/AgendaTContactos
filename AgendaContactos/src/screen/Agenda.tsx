@@ -1,4 +1,5 @@
 // Agenda.tsx
+
 import React, { useState } from 'react';
 import {
   View,
@@ -22,7 +23,7 @@ const Agenda = () => {
   const [contacto, setContacto] = useState<AgendaComponent[]>([]);
   const [contInputText, setConInputText] = useState('');
   const [nomInputText, setNomInputText] = useState('');
-  const navigation:any = useNavigation();
+  const navigation: any = useNavigation();
 
   const agregaContacto = () => {
     if (nomInputText.length < 3) {
@@ -53,7 +54,6 @@ const Agenda = () => {
     });
   };
 
-
   return (
     <View style={styles.container}>
       <TextInput
@@ -78,8 +78,10 @@ const Agenda = () => {
             style={styles.contactItem}
             onPress={() => handleContactoPress(elemento)}
           >
-            <Text style={styles.contactName}>{elemento.nombre}</Text>
-            <Text style={styles.contactNumber}>{elemento.contacto}</Text>
+            <View>
+              <Text style={styles.contactName}>{elemento.nombre}</Text>
+              <Text style={styles.contactNumber}>{elemento.contacto}</Text>
+            </View>
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -90,7 +92,7 @@ const Agenda = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f0f0f0',
     padding: 20,
   },
   input: {
@@ -99,7 +101,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#fff',
+    borderRadius: 5,
   },
   contactList: {
     marginTop: 20,
@@ -108,18 +111,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 10,
     padding: 10,
+    marginBottom: 10,
+    backgroundColor: '#fff',
+    borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#cccccc',
+    borderColor: '#dddddd',
+    elevation: 1,
   },
   contactName: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#333',
   },
   contactNumber: {
     fontSize: 14,
-    color: '#555555',
+    color: '#666',
   },
 });
 
